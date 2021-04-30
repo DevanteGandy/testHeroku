@@ -3,24 +3,31 @@ const router = express.Router();
 const Manga = require('../models/mangaDB.js');
 
 
-
+const isAuthenticated = (req, res, next) => {
+  if (req.session.currentUser) {
+    return next()
+  } else {
+    res.redirect('/sessions/new')
+  }
+}
 
 // NEW ROUTE
   router.get('/new',(req,res) => {
     res.render(
-      'new.ejs'
-    )
+      'new.ejs', { currentUser: req.session.currentUser })
   })
   // EDIT
   router.get('/:id/edit', (req, res) => {
     Manga.findById(req.params.id, (error, foundManga) => {
       res.render('./edit.ejs', {
         manga: foundManga,
+  currentUser: req.session.currentUser
+
       })
     })
   })
 // DELETE ROUTE
-  router.delete('/:id',(req,res) => {
+  router.delete('/:id',isAuthenticated,(req,res) => {
     Manga.findByIdAndRemove(req.params.id, (err, deleteManga) => {
       res.redirect('/mangadb')
     })
@@ -28,7 +35,12 @@ const Manga = require('../models/mangaDB.js');
 // SHOW ROUTE
 router.get('/:id', (req,res) => {
   Manga.findById(req.params.id, (error, foundManga) => {
-    res.render('show.ejs',{manga: foundManga});
+    res.render('show.ejs',
+    {
+      manga: foundManga,
+  currentUser: req.session.currentUser
+
+    })
   })
 })
 // UPDATE
@@ -50,12 +62,14 @@ Manga.create(req.body, (error, createdManga) => {
 })
 
 // INDEX ROUTE
-router.get('/', (req, res) => {
+router.get('/', isAuthenticated, (req, res) => {
     Manga.find({}, (error, allManga) => {
         res.render(
             'index.ejs',
             {
-                mangas: allManga
+                mangas: allManga,
+  currentUser: req.session.currentUser
+
             }
         )
     })

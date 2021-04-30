@@ -7,6 +7,8 @@ const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
+const session = require('express-session')
+
 //___________________
 //Port
 //___________________
@@ -28,11 +30,22 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride('_method'));
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false
+  })
+)
 //___________________
 // Routes
 //___________________
 const mangaController = require('./controllers/manga.js');
 app.use('/mangadb', mangaController);
+const userController = require('./controllers/users_controller.js')
+app.use('/users', userController)
+const sessionsController = require('./controllers/sessions_controller.js')
+app.use('/sessions', sessionsController)
 
 app.get('/', (req, res) => {
     res.redirect('/mangadb')
