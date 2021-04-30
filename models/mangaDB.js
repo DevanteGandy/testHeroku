@@ -7,8 +7,8 @@ const mangaSchema = new mongoose.Schema({
   previewImg: String,
   author: String,
   link: String
-})
+});
 
-const Manga = mongoose.model('Manga', mangaSchema);
+const Manga = mongoose.model('manga', mangaSchema);
 
 module.exports = Manga;

@@ -11,30 +11,43 @@ const Manga = require('../models/mangaDB.js');
       'new.ejs'
     )
   })
-// EDIT ROUTE
-router.get('/:id/edit', (req,res) => {
-  Manga.findById(req.params.id, (error,foundManga) => {
-    res.render('/edit.ejs')
+  // EDIT
+  router.get('/:id/edit', (req, res) => {
+    Manga.findById(req.params.id, (error, foundManga) => {
+      res.render('./edit.ejs', {
+        manga: foundManga,
+      })
+    })
   })
-})
 // DELETE ROUTE
   router.delete('/:id',(req,res) => {
     Manga.findByIdAndRemove(req.params.id, (err, deleteManga) => {
-      res.redirect('/mangaDB')
+      res.redirect('/mangadb')
     })
   })
 // SHOW ROUTE
 router.get('/:id', (req,res) => {
   Manga.findById(req.params.id, (error, foundManga) => {
-    res.render(
-      'show.ejs',
-      {
-        manga:foundManga
-      }
-    )
+    res.render('show.ejs',{manga: foundManga});
   })
 })
-
+// UPDATE
+router.put('/:id', (req, res) => {
+  Manga.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true },
+    (error, updatedModel) => {
+      res.redirect('/mangadb')
+    }
+  )
+})
+// CREATE
+router.post('/', (req, res) => {
+Manga.create(req.body, (error, createdManga) => {
+  res.redirect('/mangadb')
+})
+})
 
 // INDEX ROUTE
 router.get('/', (req, res) => {
@@ -42,7 +55,7 @@ router.get('/', (req, res) => {
         res.render(
             'index.ejs',
             {
-                mangas:allManga
+                mangas: allManga
             }
         )
     })
@@ -57,7 +70,7 @@ router.get('/setup/seed', (req,res) => {
         posterImg: 'https://img.mostraveller.com/uploads/images/comics/51/thumbnail.png',
         previewImg: 'https://2.bp.blogspot.com/tnSHshTfWl2PscudjF0OLiMzLh-GXFXmc_Pi5hLAOWHpW9UfDWrL3qMTrboE2vq_XpF4EeQoz7I7EKs=w700',
         author: 'Miura, Kentarou',
-        link: 'https://mangaowl.net/single/51/berserk'
+        link: 'https://mangaowl.net/single/51/berserk',
       },
       {
         name: 'Tokyo Ghoul',
@@ -65,7 +78,7 @@ router.get('/setup/seed', (req,res) => {
         posterImg: 'https://img.mostraveller.com/uploads/images/comics/132/thumbnail.png',
         previewImg: 'https://2.bp.blogspot.com/2aLPa95uiGbhuv4Eu50WTKF-5BnVvodIKiseSIOgmKqlFV8pBgmRJaugn5XjnDUebAJ39gaNh7KUViw=w700',
         author: 'Ishida, Sui',
-        link: 'https://mangaowl.net/single/132/tokyo-ghoul?__cf_chl_jschl_tk__=405e60ad164be8a04b6adbf8548515d463c91511-1619789987-0-AVHo4YO5wO4cs14Bg4740GNm1PQr2S_iBPEHUl1FXO2pY6_8O8wLM2dGLgQn1VjAPp2f9zSxSJUWHf62NbBGg08GWVx9nHKDiGpkudj2zS9-jqFvfRZhIEyJn5JHBFMaFvJdWJmqKS--w-OCYaR7JiYBzx3KpdR5ClXErq76oLkUdyEerg6Rc20bU7RwMA9dQp4Zt9XzgVj2-y0Co1-HsgLE-lpnfnvc3zT0axcFlFMu7Jneb0yVrSLn_u9xab-O0QR3--MF7eJ_Blu1mUX9hlHA_6iqnrXsZzOkosBpdXyO_k6USP3oBwkBoHmqqvuTBxrz_z5v2VN2ESB25FR2FOemPH2gUtOfcLQK-s_TIKqHFcXo1aBabI3iedPJ8fDwfoWaMhOMvHlmQVF-4xrWvj0oU2sy-busCanfXcyKHJzStoVNSWiqIZyxh1kLQVnSejw6yIyyCh2YAXRJ9HErUMrXwjjahVQ9MEdgBaNqYDS2#'
+        link: 'https://mangaowl.net/single/132/tokyo-ghoul?__cf_chl_jschl_tk__=405e60ad164be8a04b6adbf8548515d463c91511-1619789987-0-AVHo4YO5wO4cs14Bg4740GNm1PQr2S_iBPEHUl1FXO2pY6_8O8wLM2dGLgQn1VjAPp2f9zSxSJUWHf62NbBGg08GWVx9nHKDiGpkudj2zS9-jqFvfRZhIEyJn5JHBFMaFvJdWJmqKS--w-OCYaR7JiYBzx3KpdR5ClXErq76oLkUdyEerg6Rc20bU7RwMA9dQp4Zt9XzgVj2-y0Co1-HsgLE-lpnfnvc3zT0axcFlFMu7Jneb0yVrSLn_u9xab-O0QR3--MF7eJ_Blu1mUX9hlHA_6iqnrXsZzOkosBpdXyO_k6USP3oBwkBoHmqqvuTBxrz_z5v2VN2ESB25FR2FOemPH2gUtOfcLQK-s_TIKqHFcXo1aBabI3iedPJ8fDwfoWaMhOMvHlmQVF-4xrWvj0oU2sy-busCanfXcyKHJzStoVNSWiqIZyxh1kLQVnSejw6yIyyCh2YAXRJ9HErUMrXwjjahVQ9MEdgBaNqYDS2#',
       },
       {
         name: 'D.Gray-man',
@@ -73,7 +86,7 @@ router.get('/setup/seed', (req,res) => {
         posterImg: 'https://img.mostraveller.com/uploads/images/comics/363/thumbnail.png',
         previewImg: 'https://2.bp.blogspot.com/X8NBQ6E9ejRWXu2V1o1TXB_pcBnS44Oaq63qj68icpxxQj6SrV4DE-_9clo8y7FLXl7EQWA8I4F5Kzs=w700',
         author: 'Hoshino, Katsura',
-        link: 'https://mangaowl.net/single/363/d-gray-man'
+        link: 'https://mangaowl.net/single/363/d-gray-man',
       },
       {
         name: 'Gantz',
@@ -81,7 +94,7 @@ router.get('/setup/seed', (req,res) => {
         posterImg: 'https://img.mostraveller.com/uploads/images/comics/614/thumbnail.png',
         previewImg: 'https://2.bp.blogspot.com/zuIalvVZfzPXg67xNASzTOf0ZTnNHAG5L3qmfZ-TzTKt2l7MuiZQ4a8k3UmknqI227PHLOKNXumspIU=w700',
         author: 'Oku, Hiroya',
-        link: 'https://mangaowl.net/single/614/gantz'
+        link: 'https://mangaowl.net/single/614/gantz',
       },
       {
         name: 'Basara',
@@ -89,7 +102,7 @@ router.get('/setup/seed', (req,res) => {
         posterImg: 'https://img.mostraveller.com/uploads/images/comics/189/thumbnail.png',
         previewImg: 'https://2.bp.blogspot.com/AzoznS8S5IIT6z29NTM8zKRWzwVURugF-Ecri6wzNkVY6tFHbTnb0kqslTg7Yz1YA0jDWjxlOevqru8=w700',
         author: 'Tamura, Yumi',
-        link: 'https://mangaowl.net/single/MTg5/basara'
+        link: 'https://mangaowl.net/single/MTg5/basara',
       },
       {
         name: 'Yu☆Gi☆Oh!',
@@ -97,7 +110,7 @@ router.get('/setup/seed', (req,res) => {
         posterImg: 'https://img.mostraveller.com/uploads/images/comics/2889/thumbnail.png',
         previewImg: 'https://cdns4.mangaowl.com/tmp/Mqnww2iYyPApMNhWC3U8KBWYu8B083RdJK9uPhcA4XpU02Bh8SdFM94IIUbcQ5E/vSL0zqQos4g5TLQYkpICxGYYvhWmYW0TnPucFGzNtJo=',
         author: 'Takahashi, Kazuki',
-        link: 'https://mangaowl.net/single/2889/yu-gi-oh-'
+        link: 'https://mangaowl.net/single/2889/yu-gi-oh-',
       },
       {
         name: 'Hunter x Hunter',
@@ -105,7 +118,7 @@ router.get('/setup/seed', (req,res) => {
         posterImg: 'https://img.mostraveller.com/uploads/images/comics/100/thumbnail.png',
         previewImg: 'https://2.bp.blogspot.com/-LP_YMkIVNaZpdjwQooTZ5x08G1BhzRL0W6bCeqOZpzgdomvIaob_1E6DuLcKZzPTUTKPGPwFcc02bc=w700',
         author: 'Togashi, Yoshihiro',
-        link: 'https://mangaowl.net/single/100/hunter-x-hunter'
+        link: 'https://mangaowl.net/single/100/hunter-x-hunter',
       },
       {
         name: 'Dragon Ball',
@@ -113,7 +126,7 @@ router.get('/setup/seed', (req,res) => {
         posterImg: 'https://img.mostraveller.com/uploads/images/comics/178/thumbnail.png',
         previewImg: 'https://img.mangaowl.net/tmp/qBy6I6I6AXacwfJO5e6MEV5jXLHbnW88QFzw4bAsrYoNBf45P8Bxlr7SFvlvJMVZJk10h0c4kqznf7Zxq+bTOcITeqVOjkn74+OS459425E=',
         author: 'Toriyama, Akira',
-        link: 'https://mangaowl.net/single/178/dragon-ball'
+        link: 'https://mangaowl.net/single/178/dragon-ball',
       },
       {
         name: 'Bleach',
@@ -121,7 +134,7 @@ router.get('/setup/seed', (req,res) => {
         posterImg: 'https://img.mostraveller.com/uploads/images/comics/2172/thumbnail.png',
         previewImg: 'https://2.bp.blogspot.com/D1WHgjHpZSPepsEy_iJOgRYv_oNSisS7nQaDqpUcXwO_8T--15W5Es2uv8DL8B3A6_-l74SnqiHHxPA=w700',
         author: 'Kubo, Tite',
-        link: 'https://mangaowl.net/single/2172/bleach'
+        link: 'https://mangaowl.net/single/2172/bleach',
       }
     ],
     (error,data) => {

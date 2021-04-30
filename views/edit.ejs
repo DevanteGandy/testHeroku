@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include ('./partials/head.ejs') %>
+  </head>
+  <body>
+    <nav>
+      <%- include ('./partials/header.ejs') %>
+    </nav>
+    <div class="container">
+      <h1>Editing Manga</h1>
+      <form action="/mangadb/<%=manga.id%>?_method=PUT" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="<%=manga.name%>" />
+        <label for="color">Description:</label>
+        <input type="text" name="color" value="<%=manga.description%>" />
+        <br/>
+        <br>
+        <input type="submit" value="Submit">
+      <form>
+    </div>
+  </body>
+</html>

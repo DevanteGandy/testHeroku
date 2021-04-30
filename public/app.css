@@ -1,4 +1,14 @@
-
+#indexNav {
+  background-color: azure;
+  border-radius: 8px;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 5px;
+}
+.indexDiv {
+  display: flex;
+  justify-content: space-around;
+}
 .indexCard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -19,5 +29,37 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
-.container {
+
+.showCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 8px;
+  margin: 5px ;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#showImg {
+  width: 35%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+h2 {
+  text-align: center;
+}
+.showCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.showInfo {
+  padding: 2px 16px;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
 }

@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="app.css">
-        <title></title>
-    </head>
-    <nav id="indexNav">
-      <h1>MangaDB</h1>
-      <a href="/mangaDB/new">Missing a Manga?</a>
-    </nav>
+<%- include ('./partials/head.ejs') %>
+<%- include ('./partials/header.ejs') %>
     <div class="containerIndex">
     <body>
-       <% for (let manga of mangas ) { %>
+       <% for(let i = 0; i < mangas.length; i++) { %>
          <div class="indexCard">
-           <img src="<%=manga.posterImg%>">
+           <img src="<%=mangas[i].posterImg%>">
            <div class="cardInfo">
-             <a href="/mangadb/<%=manga._id%>">
-               <%= manga.name %>
+             <a href="/mangadb/<%=mangas[i]._id%>">
+               <%= mangas[i].name %>
              </a>
            </div>
          </div>

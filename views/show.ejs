@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="app.css">
-        <title></title>
-    </head>
+  <head>
+  <%- include('./partials/head.ejs') %>
+  </head>
   <body>
+    <%- include('./partials/header.ejs') %>
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/skeleton.css">
     <div class="container">
-      <div class="showImg">
-        <img src="<%=manga.posterImg%>">
-        <div class="imgInfo">
-            Title: <h1><%=manga.name%></h1>
-            Desc: <p><%=manga.description%></p>
-            Author: <p><%=manga.author%> </p>
-            READ NOW: <a href="#"></a>
-        </div>
-      </div>
-      <br>
-      <button type="button" name="button"><a href="/mangadb/<%=manga._id%>/edit">Edit</a></button>
-      <br>
-      <br>
-      <form action="/mangadb/<%=manga._id%>?_method=DELETE" method="POST">
+      <div class="showCard">
+        <img src="<%=manga.posterImg%>" id="showImg">
+        <h2>~<%=manga.name%>~</h2>
+        <button type="button" name="button"><a href="<%=manga.link%>">READ NOW</a></button>
+        <table>
+           <tr>
+             <td>Description:</td>
+             <td><p><%=manga.description%></p></td>
+           </tr>
+           <tr>
+             <td>Author:</td>
+            <td>
+              <p><%=manga.author%> </p>
+            </td>
+        </tr>
+        </table>
+        <button type="button" name="button"><a href="/mangadb/<%=manga._id%>/edit">Edit</a></button>
+        <form action="/mangadb/<%=manga._id%>?_method=DELETE" method="POST">
         <input type="submit" value="DELETE"/>
       </form>
-      <br>
-      <button type="button" name="button">
-        <a href="/mangadb">Back</a>
-      </button>
+      </div>
     </div>
   </body>
 </html>

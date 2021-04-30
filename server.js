@@ -32,7 +32,7 @@ app.use(methodOverride('_method'));
 // Routes
 //___________________
 const mangaController = require('./controllers/manga.js');
-app.use('/mangaDB', mangaController);
+app.use('/mangadb', mangaController);
 
 app.get('/', (req, res) => {
     res.redirect('/mangadb')
