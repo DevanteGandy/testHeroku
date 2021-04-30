@@ -5,22 +5,22 @@
         <link rel="stylesheet" href="app.css">
         <title></title>
     </head>
+    <nav id="indexNav">
+      <h1>MangaDB</h1>
+      <a href="/mangaDB/new">Missing a Manga?</a>
+    </nav>
     <div class="containerIndex">
     <body>
-      <nav id="indexNav">
-        <h1>MangaDB</h1>
-        <a href="/mangaDB/new">Missing a Manga?</a>
-      </nav>
-      <ul>
        <% for (let manga of mangas ) { %>
          <div class="indexCard">
-           <img src="<%=manga.posterImg%>"style="width:100%">
+           <img src="<%=manga.posterImg%>">
            <div class="cardInfo">
-             <%= manga.name %>
+             <a href="/mangadb/<%=manga._id%>">
+               <%= manga.name %>
+             </a>
            </div>
          </div>
       <% } %>
-     </ul>
     </body>
   </div>
 </html>

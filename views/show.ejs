@@ -2,8 +2,31 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="app.css">
         <title></title>
     </head>
-    <body>
-    </body>
+  <body>
+    <div class="container">
+      <div class="showImg">
+        <img src="<%=manga.posterImg%>">
+        <div class="imgInfo">
+            Title: <h1><%=manga.name%></h1>
+            Desc: <p><%=manga.description%></p>
+            Author: <p><%=manga.author%> </p>
+            READ NOW: <a href="#"></a>
+        </div>
+      </div>
+      <br>
+      <button type="button" name="button"><a href="/mangadb/<%=manga._id%>/edit">Edit</a></button>
+      <br>
+      <br>
+      <form action="/mangadb/<%=manga._id%>?_method=DELETE" method="POST">
+        <input type="submit" value="DELETE"/>
+      </form>
+      <br>
+      <button type="button" name="button">
+        <a href="/mangadb">Back</a>
+      </button>
+    </div>
+  </body>
 </html>
