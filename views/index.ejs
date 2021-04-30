@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="app.css">
+        <title></title>
+    </head>
+    <div class="containerIndex">
+    <body>
+      <nav id="indexNav">
+        <h1>MangaDB</h1>
+        <a href="/mangaDB/new">Missing a Manga?</a>
+      </nav>
+      <ul>
+       <% for (let manga of mangas ) { %>
+         <div class="indexCard">
+           <img src="<%=manga.posterImg%>"style="width:100%">
+           <div class="cardInfo">
+             <%= manga.name %>
+           </div>
+         </div>
+      <% } %>
+     </ul>
+    </body>
+  </div>
+</html>
