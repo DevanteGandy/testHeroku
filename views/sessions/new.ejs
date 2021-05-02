@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<link rel="stylesheet" href="/form.css">
   <body>
     <div class="container">
-      <h1>Log In</h1>
-      <form action="/sessions" method="POST">
-        <label for="name">User Name:</label>
-        <input type="text" name="username" required/>
-        <label for="color">Password:</label>
-        <input type="password" name="password" />
-        <br>
-        <input type="submit" value="Submit">
-      <form>
+      <div class="log-in">
+        <h1>Log In</h1>
+        <hr>
+        <form action="/sessions" method="POST">
+          <label for="name">User Name:</label>
+          <input type="text" name="username" required/>
+          <label for="color">Password:</label>
+          <input type="password" name="password" />
+          <br>
+          <input type="submit" id="submitBtn" value="Submit">
+        <form>
+        <button>
+          <a href="/users/new"> CREATE ACCOUNT</a>
+        </button>
+      </div>
     </div>
   </body>
 </html>

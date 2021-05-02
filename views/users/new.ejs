@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<link rel="stylesheet" href="/form.css">
   <body>
     <div class="container">
-      <h1>New User</h1>
-      <form action="/users" method="POST">
-        <label for="name">User Name:</label>
-        <input type="text" name="username" required/>
-        <label for="color">Password:</label>
-        <input type="password" name="password" />
-        <br>
-        <input type="submit" value="Submit">
-      </form>
+        <div class="sign-up-form">
+          <h1>Hello, New User</h1>
+          <hr>
+          <form action="/users" method="POST">
+          <input type="text" placeholder="username" name="username" required/>
+          <input type="password" name="password" placeholder="password" />
+          <br>
+          <input type="submit" id="submitBtn" value="Sign Up">
+          </form>
+        </div>
     </div>
   </body>
 </html>
