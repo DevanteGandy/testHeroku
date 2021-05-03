@@ -1,17 +1,19 @@
 /* Nav Bar */
-li, a, button {
-  font-size: 12px;
+#user, a, button {
   text-decoration: none;
   list-style: none;
-  text-align: center;
   color: black;
+  text-align: center;
 }
 .header_nav {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0px 10%;
   border-radius: 20px;
+  overflow: hidden;
+}
+#topBtn {
+ color: #f2f2f2;
+ text-align: center;
+ text-decoration: none;
 }
 .logo {
   font-size: 28px;
