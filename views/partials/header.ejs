@@ -1,15 +1,14 @@
 <header class="header_nav">
-  <a href="/mangadb">MangaDB</a>
+  <a href="/mangadb" class="logo">M a n g a D B</a>
 <nav>
   <ul>
     <% if (currentUser) {%>
       <li>Hello! <%= currentUser.username %></li>
-      <button><a href="/mangadb/new">Add a new manga</a></button>
-
     <%}%>
   </ul>
 </nav>
 <form action="/sessions?_method=DELETE" method="post">
   <input type="submit" value="Log Out" class="btn-small red">
 </form>
+  <button><a href="/mangadb/new">Add a new manga</a></button>
 </header>

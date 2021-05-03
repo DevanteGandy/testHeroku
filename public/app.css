@@ -13,7 +13,10 @@ li, a, button {
   padding: 0px 10%;
   border-radius: 20px;
 }
-
+.logo {
+  font-size: 28px;
+  font-family: pocketMonk;
+}
 /* index */
 .index-body {
 margin: 0;
@@ -98,4 +101,12 @@ tr:nth-child(even) {
 .showBtns {
   display: flex;
   justify-content: space-between;
+}
+
+
+
+
+@font-face {
+  font-family: pocketMonk;
+  src: url('PocketMonk.ttf');
 }

@@ -3,9 +3,14 @@
   <head>
   <%- include('./partials/head.ejs') %>
   </head>
-  <body class="show-body">
+  <div class="">
+    <%- include ('./partials/header.ejs') %>
+
+  </div>
+  <body>
   <link rel="stylesheet" href="/normalize.css">
   <link rel="stylesheet" href="/skeleton.css">
+  <div class="show-body">
     <div class="show-page">
       <div class="showImg">
         <img src="<%=manga.posterImg%>" id="showImg">
@@ -30,11 +35,9 @@
           <form action="/mangadb/<%=manga._id%>?_method=DELETE" method="POST">
                 <input type="submit" value="DELETE"/>
           </form>
-          <button type="button" name="button">
-            <a href="/mangadb/">BACK</a>
-          </button>
         </div>
       </div>
     </div>
+  </div>
   </body>
 </html>
