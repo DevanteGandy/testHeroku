@@ -6,6 +6,10 @@ const mangaSchema = new mongoose.Schema({
   posterImg: String,
   previewImg: String,
   author: String,
+  released: String,
+  rating: String,
+  views: String,
+  Status: String,
   link: String
 });
 

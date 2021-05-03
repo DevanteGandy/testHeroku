@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<%- include ('./partials/head.ejs') %>
-<%- include ('./partials/header.ejs') %>
+<%-include('./partials/head.ejs')%>
+<%-include('./partials/header.ejs')%>
   <body>
     <link rel="stylesheet" href="/skeleton.css">
     <link rel="stylesheet" href="/normalize.css">
@@ -11,19 +11,34 @@
         <img src="<%=manga.posterImg%>" id="showImg">
       </div>
             <div class="inner-content">
-        <table>
           <h1 class="h1T">~<%=manga.name%>~</h1>
-         <tr>
-           <td>Author:</td>
-           <td><p><%=manga.author%></p></td>
-         </tr>
-         <tr>
-           <td>Description:</td>
-          <td>
+          <hr>
+          <div class="info-row-1">
+            <span>
+              Released
+            </span>
+            <p> <%=manga.released%> </p>
+          </div>
+          <div class="info-row-1">
+            <span>
+              Author(s)
+            </span>
+            <p> <%=manga.author%> </p>
+          </div>
+          <div class="info-row-1">
+            <span>
+              Rating
+            </span>
+            <p> <%=manga.rating%> </p>
+          </div>
+          <div class="info-row-1">
+            <span>
+              Views
+            </span>
+            <p> <%=manga.views%> </p>
+          </div>
+          <hr>
             <p><%=manga.description%></p>
-          </td>
-      </tr>
-      </table>
         <div class="showBtns">
           <button type="button" name="button"><a href="<%=manga.link%>">READ NOW</a></button>
             <button type="button" name="button"><a href="/mangadb/<%=manga._id%>/edit">Edit</a></button>

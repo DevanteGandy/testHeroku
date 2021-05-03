@@ -11,9 +11,10 @@
             <figure>
               <div class="card">
             <img src="<%=mangas[i].posterImg%>" class="bg-img">
+            <figcaption><%=mangas[i].name%></figcaption>
             <div class="content">
-              <figcaption><%=mangas[i].name%></figcaption>
-              <a href="/mangadb/<%=mangas[i]._id%>" class="viewBtn">
+              <span class="fa fa-star checked"> <%=mangas[i].rating%></span>
+              <a href="/mangadb/<%=mangas[i]._id%>">
                 View manga
               </a>
             </div>
@@ -21,6 +22,6 @@
             </figure>
           <% } %>
       </div>
-
+  
     </body>
 </html>

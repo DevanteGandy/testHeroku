@@ -11,8 +11,12 @@
       <form action="/mangadb/<%=manga.id%>?_method=PUT" method="POST">
         <label class="form-label"for="name">Name:</label>
         <input class="form-input" type="text" name="name" value="<%=manga.name%>" />
-        <label class="form-label" for="color">Description:</label>
-        <input class="form-input" type="text" name="color" value="<%=manga.description%>" />
+        <label class="form-label" for="released">Released:</label>
+        <input class="form-input" type="text" name="Released" value="<%=manga.released%>" />
+        <label class="form-label" for="author">Author(s):</label>
+        <input class="form-input" type="text" name="author" value="<%=manga.author%>" />
+        <label class="form-label" for="rating">Rating:</label>
+        <input class="form-input" type="text" name="rating" value="<%=manga.rating%>" />
         <br/>
         <br>
         <input type="submit" value="Submit">

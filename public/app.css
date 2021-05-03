@@ -18,6 +18,7 @@
 .logo {
   font-size: 28px;
   font-family: pocketMonk;
+  padding: 10px;
 }
 /* index */
 .index-body {
@@ -26,7 +27,8 @@ padding: 0;
 }
 .containers {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  overflow: scroll;
 }
 .bg-img {
   background-size: cover;
@@ -36,19 +38,14 @@ padding: 0;
 .content {
   padding: 15px;
   display: flex;
-justify-content: space-between;
+  justify-content: space-between;
+  padding: 1px;
 }
 .card {
-  border: 1px solid #d3d3d3;
   border-radius: 8px;
+  text-align: center;
 }
-.viewBtn {
-  background-color: transparent;
-  border: 1px solid #2196F3;
-  padding: .5rem 1rem;
-  cursor: pointer;
-  border-radius: .25rem;
-}
+
 .banner {
   width: 100%;
   display: block;
@@ -73,7 +70,8 @@ justify-content: space-between;
   box-shadow: 0 1.4rem 8rem rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
-border-radius: .8rem;
+  border-radius: .8rem;
+  background-color: #d6d5f6
 }
 .showImg {
   min-width: 30rem;
@@ -99,14 +97,23 @@ tr:nth-child(even) {
 }
 .h1T {
   text-align: center;
+  font-family: pocketMonk;
+  font-size: 48px;
 }
 .showBtns {
   display: flex;
   justify-content: space-between;
 }
-
-
-
+.info-row-1 {
+  display: flex;
+  justify-content: space-between;
+}
+.textP {
+  font-size: 12px;
+}
+.checked {
+  color: orange;It
+}
 
 @font-face {
   font-family: pocketMonk;
