@@ -1,19 +1,26 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<%- include ('./partials/head.ejs') %>
-<%- include ('./partials/header.ejs') %>
-    <div class="containerIndex">
-    <body>
-       <% for(let i = 0; i < mangas.length; i++) { %>
-         <div class="indexCard">
-           <img src="<%=mangas[i].posterImg%>">
-           <div class="cardInfo">
-             <a href="/mangadb/<%=mangas[i]._id%>">
-               <%= mangas[i].name %>
-             </a>
-           </div>
-         </div>
-      <% } %>
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+  <%- include ('./partials/head.ejs') %>
+  <%- include ('./partials/header.ejs') %>
+    <body class="index-body">
+      <div class="banner">
+          <img src="/manga.png" id="banner-img">
+      </div>
+      <div class="containers">
+          <% for(let i = 0; i < mangas.length; i++) { %>
+            <figure>
+              <div class="card">
+            <img src="<%=mangas[i].posterImg%>" class="bg-img">
+            <div class="content">
+              <figcaption><%=mangas[i].name%></figcaption>
+              <a href="/mangadb/<%=mangas[i]._id%>" class="viewBtn">
+                View manga
+              </a>
+            </div>
+          </div>
+            </figure>
+          <% } %>
+      </div>
+
     </body>
-  </div>
 </html>

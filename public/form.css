@@ -7,6 +7,7 @@ body {
   background-position: center;
   background-size: 125%;
   background-size: cover;
+  opacity: 90%;
 }
 .sign-up-form {
   width: 300px;

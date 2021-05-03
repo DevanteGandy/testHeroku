@@ -1,17 +1,15 @@
-<nav id="indexNav">
-<a href="/mangadb">MangaDB</a>
-<ul class="ulNav">
-  <button><a href="/mangadb/new">Add a new manga</a></button>
-  <% if (currentUser) {%>
-    <li>Welcome <%= currentUser.username %></li>
-    <li>
-      <form action="/sessions?_method=DELETE" method="post">
-        <input type="submit" value="Log Out" class="btn-small red">
-      </form>
-    </li>
-  <%} else { %>
-    <button><a href="/users/new">Sign Up</a> </button>
-    <button><a href="/sessions/new">Log In</a> </button>
-  <%}%>
-</ul>
+<header class="header_nav">
+  <a href="/mangadb">MangaDB</a>
+<nav>
+  <ul>
+    <% if (currentUser) {%>
+      <li>Hello! <%= currentUser.username %></li>
+      <button><a href="/mangadb/new">Add a new manga</a></button>
+
+    <%}%>
+  </ul>
 </nav>
+<form action="/sessions?_method=DELETE" method="post">
+  <input type="submit" value="Log Out" class="btn-small red">
+</form>
+</header>

@@ -3,31 +3,37 @@
   <head>
   <%- include('./partials/head.ejs') %>
   </head>
-  <body>
-    <%- include('./partials/header.ejs') %>
-    <link rel="stylesheet" href="/normalize.css">
-    <link rel="stylesheet" href="/skeleton.css">
-    <div class="container">
-      <div class="showCard">
+  <body class="show-body">
+  <link rel="stylesheet" href="/normalize.css">
+  <link rel="stylesheet" href="/skeleton.css">
+    <div class="show-page">
+      <div class="showImg">
         <img src="<%=manga.posterImg%>" id="showImg">
-        <h2>~<%=manga.name%>~</h2>
-        <button type="button" name="button"><a href="<%=manga.link%>">READ NOW</a></button>
+      </div>
+            <div class="inner-content">
         <table>
-           <tr>
-             <td>Description:</td>
-             <td><p><%=manga.description%></p></td>
-           </tr>
-           <tr>
-             <td>Author:</td>
-            <td>
-              <p><%=manga.author%> </p>
-            </td>
-        </tr>
-        </table>
-        <button type="button" name="button"><a href="/mangadb/<%=manga._id%>/edit">Edit</a></button>
-        <form action="/mangadb/<%=manga._id%>?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE"/>
-      </form>
+          <h1 class="h1T">~<%=manga.name%>~</h1>
+         <tr>
+           <td>Author:</td>
+           <td><p><%=manga.author%></p></td>
+         </tr>
+         <tr>
+           <td>Description:</td>
+          <td>
+            <p><%=manga.description%></p>
+          </td>
+      </tr>
+      </table>
+        <div class="showBtns">
+          <button type="button" name="button"><a href="<%=manga.link%>">READ NOW</a></button>
+            <button type="button" name="button"><a href="/mangadb/<%=manga._id%>/edit">Edit</a></button>
+          <form action="/mangadb/<%=manga._id%>?_method=DELETE" method="POST">
+                <input type="submit" value="DELETE"/>
+          </form>
+          <button type="button" name="button">
+            <a href="/mangadb/">BACK</a>
+          </button>
+        </div>
       </div>
     </div>
   </body>
